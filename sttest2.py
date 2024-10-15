@@ -4,7 +4,7 @@ import numpy as np
 
 st.set_page_config(page_title= "Bem Vindo A Revolução Dos Projetos Imobiliários")
 
-df = pd.read_excel("Merged_4.xlsx")
+df = pd.read_excel("https://raw.githubusercontent.com/ferrazbenedito/sttest/main/Merged_4.xlsx")
 
 with st.container():
     st.subheader("Vamos Começar Com Algumas Perguntas Básicas")
