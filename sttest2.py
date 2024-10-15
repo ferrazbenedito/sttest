@@ -15,6 +15,9 @@ def carregar_dados():
     tabela = pd.read_excel("Merged_4.xlsx")
     return tabela
 
+st.write(df.columns)
+
+
 with st.container():
     st.subheader("Vamos Começar Com Algumas Perguntas Básicas")
 
