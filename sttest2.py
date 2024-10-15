@@ -6,7 +6,7 @@ import streamlit as st
 st.set_page_config(page_title="Bem Vindo A Revolução Dos Projetos Imobiliários")
 
 # Use the raw GitHub link to your .xlsx file
-url = "https://raw.githubusercontent.com/ferrazbenedito/sttest/main/Merged_4.xlsx"
+url = "https://raw.githubusercontent.com/ferrazbenedito/sttest/refs/heads/main/Merged_4_semicolon_separated.csv"
 
 # Fetch the file using requests
 response = requests.get(url)
@@ -14,7 +14,7 @@ response = requests.get(url)
 # Ensure the response is valid before attempting to load the Excel file
 if response.status_code == 200:
     # Read the Excel file from the response content, specify the engine
-    df = pd.read_excel(io.BytesIO(response.content), engine='openpyxl')
+    df = pd.read_csv(io.BytesIO(response.content), engine='openpyxl', sep = ";")
 else:
     st.error(f"Failed to load data. Status code: {response.status_code}")
 
