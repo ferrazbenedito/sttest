@@ -1,31 +1,23 @@
-import pandas as pd
-import requests
-import io
 import streamlit as st
+import pandas as pd 
+import numpy as np
 
-st.set_page_config(page_title="Bem Vindo A Revolução Dos Projetos Imobiliários")
+st.set_page_config(page_title= "Bem Vindo A Revolução Dos Projetos Imobiliários")
 
-# Use the raw GitHub link to your .xlsx file
-url = "https://raw.githubusercontent.com/ferrazbenedito/sttest/refs/heads/main/Merged_4_semicolon_separated.csv"
-
-# Fetch the file using requests
-response = requests.get(url)
-
-# Ensure the response is valid before attempting to load the Excel file
-if response.status_code == 200:
-    # Read the Excel file from the response content, specify the engine
-    df = pd.read_csv(io.BytesIO(response.content), engine='openpyxl', sep = ";")
-else:
-    st.error(f"Failed to load data. Status code: {response.status_code}")
+df = pd.read_csv(r"", sep=';')
 
 with st.container():
     st.subheader("Vamos Começar Com Algumas Perguntas Básicas")
+
     st.title("Ao Final Desse Programa Voçê Vai Poder Saber Todas As Infomações Econômicas E Financeiras Do Seu Empreendimento!")
-    st.write("E Melhor, Tera Um Dashboard Completo Com Todas As Avaliações \n [Ou se quiser pode saber mais sobre o melhor empreendimento de Alta Floresta](https://jardimsantacecilia.com.br/)")
+
+    st.write("E Melhor, Tera Um Dashboard Completo Com Todas As Avaliações \n [Ou se quiser pode saber mais sobre o melhor empreendimento de Alta Floresta](https://jardimsantacecilia.com.br/) ")
 
 with st.container():
     st.write("---")
-    st.area_chart(data=df, x="key", y=["df_sum_columns_Entrada", "df_sum_columns_Parcela", "df_sum_columns_Comissao", "Receita_Distribuivel", "df_Pos_Obra_Mensal", "df_Pre_Obra_Mensal"])
+
+    st.area_chart(data= df, x= "key", y= ["df_sum_columns_Entrada",	"df_sum_columns_Parcela",	"df_sum_columns_Comissao"	,"Receita_Distribuivel",	"df_Pos_Obra_Mensal",	"df_Pre_Obra_Mensal"])
+
 
 with st.form("my_form"):
     st.write("Inside the form")
@@ -36,5 +28,9 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         st.write("slider", slider_val, "checkbox", checkbox_val)
+st.write("Outside the form")
+
+
+
 
 st.write("Outside the form")
